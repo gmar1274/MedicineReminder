@@ -3,6 +3,7 @@ package com.example.medicinereminder;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -10,7 +11,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
-import com.example.medicinereminder.Room.AppDatabase;
+import com.example.medicinereminder.Room.AppRoomDatabase;
 
 import org.florescu.android.rangeseekbar.RangeSeekBar;
 
@@ -19,7 +20,6 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
-    private AppDatabase mSql;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,21 +41,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });*/
     }
+
     @Override
-    protected void onStart(){
-        mSql = Room.databaseBuilder(getApplicationContext(),AppDatabase.class,"MedicineRecord").build();
+    protected void onStart() {
         super.onStart();
     }
+
     @Override
-    protected void onStop(){
-        mSql.close();
+    protected void onStop() {
         super.onStop();
     }
-    private String prettyDisplay(String date){
+
+    private String prettyDisplay(String date) {
         SimpleDateFormat sdf = new SimpleDateFormat("h:mm a");
         return sdf.format(date);
     }
-    private String getNextDosage(){
+
+    private String getNextDosage() {
         String noDosage = "You have no upcoming dosage.";
         return noDosage;
     }
