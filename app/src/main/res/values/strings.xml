@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Medicine Reminder</string>
+    <string name="empty">N/A</string>
 </resources>
