@@ -1,6 +1,9 @@
 package com.example.medicinereminder;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
 import android.content.Context;
@@ -24,8 +27,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
-        TextView tv = findViewById(R.id.tvNextDosage);
-        tv.setText(getNextDosage());
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Upcoming Medication");
+        RecyclerView recyclerView = findViewById(R.id.rv);
+        final MedicineRecordAdapter adapter = new MedicineRecordAdapter(this);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
         /*Spinner unitSpinner = findViewById(R.id.spinner);
         final RangeSeekBar<Float> seekBar = findViewById(R.id.seekBar);
         seekBar.setOnRangeSeekBarChangeListener(new RangeSeekBar.OnRangeSeekBarChangeListener<Float>() {

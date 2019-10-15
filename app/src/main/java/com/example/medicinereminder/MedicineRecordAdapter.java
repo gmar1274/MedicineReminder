@@ -31,6 +31,7 @@ public class MedicineRecordAdapter extends RecyclerView.Adapter<MedicineRecordAd
             tvUnit = itemView.findViewById(R.id.tvUnits);
             tvQuantifier = itemView.findViewById(R.id.tvQuantifier);
             tvRange = itemView.findViewById(R.id.tvRange);
+            tvLastTaken = itemView.findViewById(R.id.tvLastTaken);
         }
     }
     private final LayoutInflater mInflater;
@@ -59,5 +60,17 @@ public class MedicineRecordAdapter extends RecyclerView.Adapter<MedicineRecordAd
             holder.tvName.setText("No upcoming medicines...");
 
         }
+    }
+    void setmMedicineRecords(List<MedicineRecord> medicineRecords){
+        mMedicineRecords = medicineRecords;
+        notifyDataSetChanged();
+    }
+    // getItemCount() is called many times, and when it is first called,
+    // mWords has not been updated (means initially, it's null, and we can't return null).
+    @Override
+    public int getItemCount() {
+        if (mMedicineRecords != null)
+            return mMedicineRecords.size();
+        else return 0;
     }
 }
