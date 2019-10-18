@@ -57,7 +57,7 @@ public class MedicineRecordAdapter extends RecyclerView.Adapter<MedicineRecordAd
             holder.tvName.setText(current.getMedicine_name());
             holder.tvDosageAmount.setText(String.format("%.2f",current.getDosage_amount()));
             holder.tvUnit.setText(current.getUnit());
-            holder.tvQuantifier.setText(current.getQuantifier());
+            holder.tvQuantifier.setText("");
             holder.tvRange.setText(current.getRange());
             SimpleDateFormat sdf = new SimpleDateFormat("EE MM/dd/yyyy h:mm a");
             holder.tvLastTaken.setText(sdf.format(current.getLast_taken()));
