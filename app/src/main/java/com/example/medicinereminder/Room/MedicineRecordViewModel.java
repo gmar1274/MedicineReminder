@@ -7,11 +7,10 @@ import androidx.lifecycle.LiveData;
 
 import java.util.List;
 
-public class MedicineRecordVIewModel extends AndroidViewModel {
+public class MedicineRecordViewModel extends AndroidViewModel {
     private MedicineRecordRepo mMedicineRecordRepo;
-
     private LiveData<List<MedicineRecord>> mMedicineRecords;
-    public MedicineRecordVIewModel(Application app){
+    public MedicineRecordViewModel(Application app){
         super(app);
         mMedicineRecordRepo = new MedicineRecordRepo(app);
         mMedicineRecords = mMedicineRecordRepo.getmMedicineRecords();
@@ -22,4 +21,5 @@ public class MedicineRecordVIewModel extends AndroidViewModel {
     public void insert(MedicineRecord medicineRecord){
         mMedicineRecordRepo.insert(medicineRecord);
     }
+    public MedicineRecordRepo getAppRepo(){return this.mMedicineRecordRepo;}
 }

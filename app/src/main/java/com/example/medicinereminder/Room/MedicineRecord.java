@@ -5,6 +5,8 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import com.example.medicinereminder.R;
+
 import java.util.Date;
 
 @Entity(tableName = "MedicineRecord")
@@ -15,31 +17,28 @@ public class MedicineRecord {
     @NonNull
     public String medicine_name;
     public Date last_taken;
-    public float start_range;
-    public float end_range;
     public String unit;
     public String note;
     public String quantifier;
     public double dosage_amount;
-    public  MedicineRecord(String name){
-        this.medicine_name=name;
+    public int color;
+    public String icon;
+    public String dosage_frequency;
+    public  MedicineRecord(String medicine_name){
+        this.medicine_name=medicine_name;
         this.last_taken = new Date();
-        this.start_range=this.end_range=-1;
+        this.dosage_amount=-1;
+        this.unit="N/A";
+        this.quantifier="N/A";
+        this.dosage_frequency="N/A";
+        this.color= R.color.colorPrimary;
+        this.icon="&#xf00d;";
     }
-
     public double getDosage_amount() {
         return dosage_amount;
     }
-
     public void setDosage_amount(double dosage_amount) {
         this.dosage_amount = dosage_amount;
-    }
-
-    public void setStart_range(float start_range) {
-        this.start_range = start_range;
-    }
-    public void setEnd_range(float end_range) {
-        this.end_range = end_range;
     }
     public void setUnit(String unit) {
         this.unit = unit;
@@ -51,26 +50,46 @@ public class MedicineRecord {
     public String getMedicine_name(){return medicine_name;}
     public String getUnit(){return unit;}
     public Date getLast_taken(){return last_taken;}
-
-    public float getStart_range() {
-        return start_range;
-    }
-
-    public float getEnd_range() {
-        return end_range;
-    }
-
     public void setNote(String note) {
         this.note = note;
     }
-
     public String getQuantifier() {
         return quantifier;
     }
+
+    public void setMedicine_name(@NonNull String medicine_name) {
+        this.medicine_name = medicine_name;
+    }
+
+    public void setLast_taken(Date last_taken) {
+        this.last_taken = last_taken;
+    }
+
+    public int getColor() {
+        return color;
+    }
+
+    public void setColor(int color) {
+        this.color = color;
+    }
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }
+
+    public String getDosage_frequency() {
+        return dosage_frequency;
+    }
+
+    public void setDosage_frequency(String dosage_frequency) {
+        this.dosage_frequency = dosage_frequency;
+    }
+
     public String getRange(){
-        if(start_range!=-1 && end_range !=-1){
-            return String.format("%.2f - %.2f",start_range,end_range);
-        }else
-            return String.format("%.2f",start_range);
+       return this.dosage_frequency;
     }
 }

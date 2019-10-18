@@ -1,13 +1,15 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:fontFamily">@font/abhaya_libre</item>
-        <item name="actionBarStyle">@style/MyActionBarLogo</item>
+        <item name="android:windowActivityTransitions">true</item>
+        <item name="android:windowEnterTransition">@android:transition/slide_right</item>
+        <item name="android:windowExitTransition">@android:transition/slide_left</item>
     </style>
     <style name="medicine_record_title">
         <item name="android:layout_width">match_parent</item>
@@ -20,14 +22,16 @@
     <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
         <item name="android:windowBackground">@drawable/splash_screen</item>
     </style>
-    <style name="MyActionBarLogo" parent="@style/Widget.AppCompat.Light.ActionBar.Solid">
+    <style name="MyActionBarStyle">
         <item name="background">@color/white</item>
-        <item name="logo">@mipmap/ic_launcher</item>
         <item name="android:titleTextStyle">@style/ActionbarTextStyle</item>
-        <item name="displayOptions">useLogo|showHome</item>
+        <item name="android:homeAsUpIndicator">@mipmap/ic_launcher</item>
+        <item name="android:displayOptions">showHome|useLogo</item>
+        <item name="logo">@mipmap/ic_launcher</item>
     </style>
     <style name="ActionbarTextStyle" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
         <item name="android:textColor">@color/actionBarTitle</item>
+        <item name="android:label">@string/home_screen</item>
         <item name="android:fontFamily">@font/abhaya_libre</item>
     </style>
 </resources>

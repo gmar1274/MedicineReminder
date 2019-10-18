@@ -6,5 +6,5 @@
     <color name="button">#FFEB1F</color>
     <color name="buttonText">#FFFFFF</color>
     <color name="white">#FFFF</color>
-    <color name="actionBarTitle">#0000</color>
+    <color name="actionBarTitle">#000000</color>
 </resources>

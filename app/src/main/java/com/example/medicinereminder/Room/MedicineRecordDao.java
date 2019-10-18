@@ -18,9 +18,9 @@ import java.util.List;
  **/
 @Dao
 public interface MedicineRecordDao {
-    @Query("SELECT * FROM MedicineRecord ORDER BY dosage DESC")
+    @Query("SELECT * FROM MedicineRecord ORDER BY last_taken DESC")
     LiveData<List<MedicineRecord>> getAll();
-    @Query("SELECT  * FROM MedicineRecord ORDER BY dosage ASC LIMIT 1")
+    @Query("SELECT  * FROM MedicineRecord ORDER BY last_taken ASC LIMIT 1")
     LiveData<List<MedicineRecord>> getLastDosage();
     @Insert(onConflict= OnConflictStrategy.IGNORE)
     void insert(MedicineRecord medicineRecord);

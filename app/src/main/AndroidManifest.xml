@@ -4,11 +4,10 @@
 
     <application
         android:allowBackup="true"
+        android:logo="@mipmap/ic_launcher"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:logo="@mipmap/ic_launcher"
         android:theme="@style/AppTheme">
         <activity
             android:name=".SplashActivity"
@@ -22,7 +21,13 @@
             android:name=".MainActivity"
             android:screenOrientation="portrait">
         </activity>
-
+        <activity android:name=".NewMedicineRecordActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <!-- Sample AdMob App ID: ca-app-pub-3940256099942544~3347511713 -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-9309556355508377~1022573913"/>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
