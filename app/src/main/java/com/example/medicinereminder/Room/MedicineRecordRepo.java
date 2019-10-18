@@ -24,11 +24,11 @@ public class MedicineRecordRepo {
      * @param medicineRecord
      */
     public void insert(MedicineRecord medicineRecord){
-
+       new InsertAsyncTask(mMedicineRecordDao).execute(medicineRecord);
     }
-    private static class insertAsyncTask extends AsyncTask<MedicineRecord,Void,Void>{
+    private static class InsertAsyncTask extends AsyncTask<MedicineRecord,Void,Void>{
         private  MedicineRecordDao mAsyncTaskDao;
-        public insertAsyncTask(MedicineRecordDao medicineRecordDao){
+        public InsertAsyncTask(MedicineRecordDao medicineRecordDao){
             mAsyncTaskDao = medicineRecordDao;
         }
         @Override

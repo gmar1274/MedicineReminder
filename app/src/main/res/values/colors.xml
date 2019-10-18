@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="radiobottonselector">#00DDC9</color>
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#E4FF7E</color>
-    <color name="button">#FFEB1F</color>
+    <color name="colorAccent">#00DDC9</color>
+
     <color name="buttonText">#FFFFFF</color>
     <color name="white">#FFFF</color>
     <color name="actionBarTitle">#000000</color>

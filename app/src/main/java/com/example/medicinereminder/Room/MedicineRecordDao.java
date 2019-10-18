@@ -26,4 +26,6 @@ public interface MedicineRecordDao {
     void insert(MedicineRecord medicineRecord);
     @Delete
     void delete(MedicineRecord medicineRecord);
+    @Query("DELETE FROM 'MedicineRecord'")
+    void deleteAll();
 }

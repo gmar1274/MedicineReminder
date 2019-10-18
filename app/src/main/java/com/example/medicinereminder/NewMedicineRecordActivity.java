@@ -1,6 +1,7 @@
 package com.example.medicinereminder;
 
 import android.content.Intent;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -23,7 +24,13 @@ import com.skydoves.colorpickerview.listeners.ColorListener;
 
 public class NewMedicineRecordActivity extends AppCompatActivity {
 
-    public static final String EXTRA_REPLY ="" ;
+    public static final String EXTRA_NAME="EXTRA_NAME";
+    public static final String EXTRA_DOSAGE_AMOUNT ="EXTRA_DOSAGE_AMOUNT";
+    public static final String EXTRA_DOSAGE_FREQ="EXTRA_DOSAGE_FREQ";
+    public static final String EXTRA_DOSAGE_UNITS="EXTRA_DOSAGE_UNITS";
+    public static final String EXTRA_NOTE="EXTRA_NOTE";
+    public static final String EXTRA_ICON="EXTRA_ICON";
+    public static final String EXTRA_COLOR="EXTRA_COLOR";
     private final String ERROR = "Cannot be empty.";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,11 +66,15 @@ public class NewMedicineRecordActivity extends AppCompatActivity {
         final EditText multiAutoCompleteTextViewNote = findViewById(R.id.multiAutoCompleteTextViewNote);
 
         Button button = findViewById(R.id.buttonCreateRecord);
+
+        GradientDrawable drawable = (GradientDrawable) button.getBackground();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            drawable.setColor(getColor(R.color.colorPrimary));
+        }
         button.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
                 RadioButton icon = findViewById(radioGroup.getCheckedRadioButtonId());
-                Toast.makeText(NewMedicineRecordActivity.this,icon.getText().toString(),Toast.LENGTH_LONG).show();
                 Intent replyIntent = new Intent();
                 if (isEmpty(editTextMedName)) {
                    // setResult(RESULT_CANCELED, replyIntent);
@@ -79,7 +90,16 @@ public class NewMedicineRecordActivity extends AppCompatActivity {
                     String dosage_amount = editTextDosageAmount.getText().toString();
                     String dosage_unit = editTextDosageUnits.getText().toString();
                     String dosage_freq = editTextDosageFreq.getText().toString();
-                    replyIntent.putExtra(EXTRA_REPLY, name);
+                    String unicodeIcon = icon.getText().toString();//unicode
+                    String note = multiAutoCompleteTextViewNote.getText().toString();
+                    int color = icon.getCurrentTextColor();
+                    replyIntent.putExtra(EXTRA_NAME, name);
+                    replyIntent.putExtra(EXTRA_DOSAGE_AMOUNT, dosage_amount);
+                    replyIntent.putExtra(EXTRA_DOSAGE_UNITS, dosage_unit);
+                    replyIntent.putExtra(EXTRA_DOSAGE_FREQ, dosage_freq);
+                    replyIntent.putExtra(EXTRA_ICON,unicodeIcon);
+                    replyIntent.putExtra(EXTRA_NOTE, note);
+                    replyIntent.putExtra(EXTRA_COLOR, color);
                     setResult(RESULT_OK, replyIntent);
                     finish();
                 }

@@ -47,18 +47,18 @@ public abstract class AppRoomDatabase extends RoomDatabase {
                     new PopulateDbAsync(mSql).execute();
                 }
             };
-    private static class PopulateDbAsync extends AsyncTask<Void, Void, Void> {
+    public static class PopulateDbAsync extends AsyncTask<Void, Void, Void> {
         private final MedicineRecordDao mMedicineRecordDao;
         PopulateDbAsync(AppRoomDatabase db) {
             mMedicineRecordDao = db.medicineRecordDao();
         }
         @Override
         protected Void doInBackground(final Void... params) {
-            //mDao.deleteAll();
-            MedicineRecord medicineRecord = new MedicineRecord("Hello");
-            mMedicineRecordDao.insert(medicineRecord);
-            MedicineRecord medicineRecord1 = new MedicineRecord("World");
-            mMedicineRecordDao.insert(medicineRecord1);
+            //mMedicineRecordDao.deleteAll();
+            //MedicineRecord medicineRecord = new MedicineRecord("Hello");
+            //mMedicineRecordDao.insert(medicineRecord);
+            //MedicineRecord medicineRecord1 = new MedicineRecord("World");
+            //mMedicineRecordDao.insert(medicineRecord1);
             return null;
         }
     }

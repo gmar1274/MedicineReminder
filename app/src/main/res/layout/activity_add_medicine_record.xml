@@ -18,67 +18,96 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:checkedButton="@id/radioButtonLiquid"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
         android:orientation="horizontal">
 
         <RadioButton
             android:id="@+id/radioButtonLiquid"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checked="true"
             android:layout_weight="1"
             android:autoLink="all"
             android:button="@null"
+            android:checked="true"
+            android:fontFamily="@font/font_awesome_solid"
             android:gravity="center"
-            android:background="@mipmap/text"
-            android:inputType="text"
-            android:text="\uf00d"
-            android:textSize="50sp" />
-
+            android:background="@drawable/radio_background"
+            android:padding="8dp"
+            android:text="\uf043"
+            android:textSize="50sp"
+            android:elevation="2dp"/>
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
         <RadioButton
             android:id="@+id/radioButtonTablet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/radio_background"
             android:layout_weight="1"
             android:button="@null"
+            android:fontFamily="@font/font_awesome_solid"
             android:gravity="center"
-            android:text="&#xf00d;"
+            android:elevation="2dp"
             android:inputType="text"
+            android:text="\uf490"
+            android:padding="8dp"
             android:textSize="50sp" />
-
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
         <RadioButton
             android:id="@+id/radioButtonCapsule"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/radio_background"
             android:layout_weight="1"
             android:button="@null"
+            android:fontFamily="@font/font_awesome_solid"
             android:gravity="center"
             android:inputType="text"
             android:text="\uf46b"
-            android:textSize="50sp" />
+            android:padding="8dp"
+            android:textSize="50sp"
+            android:elevation="2dp"
+            />
     </RadioGroup>
 
     <com.skydoves.colorpickerview.ColorPickerView
         android:id="@+id/colorPickerView"
         android:layout_width="match_parent"
         android:layout_height="100dp"
+        android:layout_marginTop="8dp"
+        android:padding="8dp"
         app:palette="@drawable/palette"
-        app:selector="@drawable/wheel" />
+        app:selector="@drawable/wheel" >
 
-    <EditText
-        android:id="@+id/editTextDosageAmount"
+    </com.skydoves.colorpickerview.ColorPickerView>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Dosage Amount (ex. 7.5)"
-        android:inputType="number" />
+        android:orientation="horizontal">
 
-    <EditText
-        android:id="@+id/editTextDosageUnits"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Dosage Units (ex. ml) "
-        android:inputType="textPersonName" />
+        <EditText
+            android:id="@+id/editTextDosageAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Dosage Amount (ex. 7.5)"
+            android:inputType="number|numberDecimal" />
+
+        <EditText
+            android:id="@+id/editTextDosageUnits"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Dosage Units (ex. ml) "
+            android:inputType="textPersonName" />
+    </LinearLayout>
 
     <EditText
         android:id="@+id/editTextDosageFreq"
@@ -86,7 +115,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Dosage Frequency (ex. once a day or 2-3 hours)"
-        android:inputType="number" />
+        android:inputType="text" />
 
     <MultiAutoCompleteTextView
         android:id="@+id/multiAutoCompleteTextViewNote"
@@ -104,7 +133,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:background="@color/colorPrimary"
+            android:background="@drawable/corners"
             android:text="Create"
             android:textColor="@color/white" />
     </LinearLayout>

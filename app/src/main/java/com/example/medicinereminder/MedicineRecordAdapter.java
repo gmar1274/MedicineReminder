@@ -62,6 +62,7 @@ public class MedicineRecordAdapter extends RecyclerView.Adapter<MedicineRecordAd
             SimpleDateFormat sdf = new SimpleDateFormat("EE MM/dd/yyyy h:mm a");
             holder.tvLastTaken.setText(sdf.format(current.getLast_taken()));
             holder.tvIcon.setTextColor(current.getColor());
+            holder.tvIcon.setText(current.getIcon());
             TextView tv = holder.tvName;
             tv.setBackgroundResource(R.drawable.corners);
             GradientDrawable drawable = (GradientDrawable) tv.getBackground();

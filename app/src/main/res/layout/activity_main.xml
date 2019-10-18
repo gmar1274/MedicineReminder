@@ -78,7 +78,6 @@ android:layout_alignParentRight="true"
         android:fontFamily="@font/alfa_slab_one"
         android:text="Log"
         android:textSize="18sp"
-        android:background="@color/button"
         android:textColor="@color/buttonText"
         />
 

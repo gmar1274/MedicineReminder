@@ -120,9 +120,26 @@ public class MainActivity extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == NEW_MEDICINE_RECORD_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
-            MedicineRecord medicineRecord = new MedicineRecord(data.getStringExtra(NewMedicineRecordActivity.EXTRA_REPLY));
+        if (requestCode == NEW_MEDICINE_RECORD_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {//incoming from new activity and is okay
+            String name = data.getStringExtra(NewMedicineRecordActivity.EXTRA_NAME);
+            String dosage_amount = data.getStringExtra(NewMedicineRecordActivity.EXTRA_DOSAGE_AMOUNT);
+            String dosage_unit = data.getStringExtra(NewMedicineRecordActivity.EXTRA_DOSAGE_UNITS);
+            String dosage_freq = data.getStringExtra(NewMedicineRecordActivity.EXTRA_DOSAGE_FREQ);
+            String unicodeIcon =data.getStringExtra(NewMedicineRecordActivity.EXTRA_ICON);
+            String note = data.getStringExtra(NewMedicineRecordActivity.EXTRA_NOTE);
+            int color = data.getIntExtra(NewMedicineRecordActivity.EXTRA_COLOR,this.getResources().getColor(R.color.colorPrimary));
+            MedicineRecord medicineRecord = new MedicineRecord(name);
+            medicineRecord.setDosage_amount(Double.parseDouble(dosage_amount));
+            medicineRecord.setDosage_frequency(dosage_freq);
+            medicineRecord.setUnit(dosage_unit);
+            medicineRecord.setIcon(unicodeIcon);
+            medicineRecord.setColor(color);
+            medicineRecord.setNote(note);
             mMedicineRecordViewModel.insert(medicineRecord);
+            Toast.makeText(
+                    getApplicationContext(),
+                    "Saved!",
+                    Toast.LENGTH_LONG).show();
         } else {
             Toast.makeText(
                     getApplicationContext(),
