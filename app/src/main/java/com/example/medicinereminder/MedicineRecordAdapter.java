@@ -53,8 +53,6 @@ public class MedicineRecordAdapter extends RecyclerView.Adapter<MedicineRecordAd
     public void onBindViewHolder(MedicineViewHolder holder, int pos){
             if(mMedicineRecords!=null){
             MedicineRecord current = mMedicineRecords.get(pos);
-            Random rnd = new Random();
-            int color = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
             holder.tvNote.setText(current.getNote());
             holder.tvName.setText(current.getMedicine_name());
             holder.tvDosageAmount.setText(String.format("%.2f",current.getDosage_amount()));
@@ -63,11 +61,11 @@ public class MedicineRecordAdapter extends RecyclerView.Adapter<MedicineRecordAd
             holder.tvRange.setText(current.getRange());
             SimpleDateFormat sdf = new SimpleDateFormat("EE MM/dd/yyyy h:mm a");
             holder.tvLastTaken.setText(sdf.format(current.getLast_taken()));
-            holder.tvIcon.setTextColor(color);
+            holder.tvIcon.setTextColor(current.getColor());
             TextView tv = holder.tvName;
             tv.setBackgroundResource(R.drawable.corners);
             GradientDrawable drawable = (GradientDrawable) tv.getBackground();
-            drawable.setColor(color);
+            drawable.setColor(current.getColor());
         }else {
             holder.tvName.setText("No upcoming medicines...");
 

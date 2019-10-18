@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.RoomDatabase;
@@ -94,7 +95,9 @@ public class MainActivity extends AppCompatActivity {
         final MedicineRecordAdapter adapter = new MedicineRecordAdapter(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        //
+        recyclerView.addItemDecoration(new DividerItemDecoration(this,
+                DividerItemDecoration.VERTICAL));recyclerView.addItemDecoration(new DividerItemDecoration(this,
+                DividerItemDecoration.VERTICAL));
         mMedicineRecordViewModel =  new ViewModelProviders().of(this).get(MedicineRecordViewModel.class);
         mMedicineRecordViewModel.getmMedicineRecords().observe(this, new Observer<List<MedicineRecord>>() {
             @Override
@@ -141,13 +144,4 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
         AppRoomDatabase.getAppDatabase().close();
    }
-    private String prettyDisplay(String date) {
-        SimpleDateFormat sdf = new SimpleDateFormat("h:mm a");
-        return sdf.format(date);
-    }
-
-    private String getNextDosage() {
-        String noDosage = "You have no upcoming dosage.";
-        return noDosage;
-    }
 }
